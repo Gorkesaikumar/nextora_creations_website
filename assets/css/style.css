@@ -362,3 +362,99 @@ section:nth-child(even) {
     box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
     background: white;
 }
+
+/* =========================================
+   RESPONSIVE DESIGN (Mobile First Approach)
+   ========================================= */
+
+@media (max-width: 991px) {
+    /* Tablet & Mobile Adjustments */
+    .hero-section {
+        padding-top: 150px;
+        text-align: center;
+    }
+    
+    .hero-section .row {
+        flex-direction: column-reverse; /* Image on top? No, usually image below text on mobile unless it's hero */
+    }
+    /* Actually for this specific hero, Image is Col-2, Text is Col-1. 
+       On mobile, usually Text First, Image Second is standard.
+       But let's stick to default bootstrap stacking order (Text then Image) which is correct.
+    */
+    
+    .section-title::after {
+        margin: 15px auto; /* Center underline on mobile */
+    }
+    
+    .pricing-card-premium {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Mobile Landscape & Portrait */
+    
+    /* Global Spacing */
+    section {
+        padding: 60px 0; /* Reduce padding from 100px */
+    }
+    
+    /* Typography Scaling */
+    h1.display-3 {
+        font-size: 2.5rem; /* Scale down hero title */
+    }
+    
+    h2.section-title {
+        font-size: 2rem;
+    }
+    
+    /* Hero Section */
+    .hero-section {
+        padding: 120px 0 60px;
+        min-height: auto; /* Allow content to dictate height */
+    }
+    
+    /* Buttons */
+    .hero-section .d-flex {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .btn-primary-gradient, 
+    .btn-outline-dark {
+        width: 100%; /* Full width buttons for easier tapping */
+        display: block;
+        margin-bottom: 15px;
+    }
+    
+    /* Cards */
+    .glass-card, .pricing-card-premium {
+        padding: 1.5rem; /* Reduce padding to save space */
+    }
+    
+    .icon-box {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+    
+    /* Team Section Img */
+    .team-img-wrapper {
+        width: 120px;
+        height: 120px;
+    }
+    
+    /* Navbar text adjustment */
+    .navbar-brand span {
+        font-size: 1.1rem;
+    }
+    
+    /* Offer Popup */
+    .modal-content.offer-modal h3 {
+        font-size: 1.5rem;
+    }
+    
+    .modal-content.offer-modal i.display-3 {
+        font-size: 3rem;
+    }
+}
