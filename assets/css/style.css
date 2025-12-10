@@ -420,7 +420,7 @@ section:nth-child(even) {
     
     /* Hero Section */
     .hero-section {
-        padding: 120px 0 60px;
+        padding: 180px 0 60px; /* Increased top padding to clear fixed header */
         min-height: auto; /* Allow content to dictate height */
     }
     
