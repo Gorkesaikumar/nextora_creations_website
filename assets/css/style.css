@@ -382,14 +382,14 @@ section:nth-child(even) {
     }
     
     .hero-section .row {
-        flex-direction: column-reverse;
-        gap: 30px; /* Add space between stored items */
+        flex-direction: column; /* Text first, Logo second */
+        gap: 30px; 
     }
     
-    /* Reset margin on the logo container for mobile */
+    /* Adjust margin for logo container */
     .hero-section .col-lg-6.mt-5 {
         margin-top: 0 !important;
-        margin-bottom: 20px;
+        margin-bottom: 0;
     }
     
     .section-title::after {
