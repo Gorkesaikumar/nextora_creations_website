@@ -375,12 +375,15 @@ section:nth-child(even) {
     }
     
     .hero-section .row {
-        flex-direction: column-reverse; /* Image on top? No, usually image below text on mobile unless it's hero */
+        flex-direction: column-reverse;
+        gap: 30px; /* Add space between stored items */
     }
-    /* Actually for this specific hero, Image is Col-2, Text is Col-1. 
-       On mobile, usually Text First, Image Second is standard.
-       But let's stick to default bootstrap stacking order (Text then Image) which is correct.
-    */
+    
+    /* Reset margin on the logo container for mobile */
+    .hero-section .col-lg-6.mt-5 {
+        margin-top: 0 !important;
+        margin-bottom: 20px;
+    }
     
     .section-title::after {
         margin: 15px auto; /* Center underline on mobile */
