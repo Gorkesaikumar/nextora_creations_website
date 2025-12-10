@@ -23,16 +23,13 @@ window.addEventListener('resize', adjustNavbar);
 window.addEventListener('load', adjustNavbar);
 adjustNavbar();
 
-// Recurring Offer Popup (Every 30 Seconds)
-// Note: In production, you might want to use localStorage to not annoy users too much.
-// But as per specific request "every 30 seconds":
-setTimeout(() => {
-    // Initial triggering after 30s
-    showOfferModal();
-    
-    // Then every 30s
-    setInterval(showOfferModal, 30000); 
-}, 30000);
+// One-time Offer Popup (First visit only, after 60 seconds)
+if (!localStorage.getItem('popupShown')) {
+    setTimeout(() => {
+        showOfferModal();
+        localStorage.setItem('popupShown', 'true');
+    }, 60000); // 60 seconds
+}
 
 function showOfferModal() {
     const offerModalElement = document.getElementById('offerModal');
