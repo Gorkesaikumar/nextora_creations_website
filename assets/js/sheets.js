@@ -11,22 +11,19 @@ const BASE_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx
 // Fallback Data (For when Sheet ID is not yet connected)
 const FALLBACK_DATA = {
     services: [
-        { title: "Website Design", description: "Premium, responsive designs. <strong>FREE OF COST</strong> (Launch Offer).", icon: "bi-palette" },
-        { title: "Web Applications", description: "Scalable custom apps (React/Django). <strong>Starting at ₹25,000</strong>.", icon: "bi-code-slash" }
+        { title: "Free Website Design", description: "For Small Businesses. <strong>₹0 Cost</strong>. Client pays hosting/domain only. 48-hour delivery.", icon: "bi-palette" },
+        { title: "Custom Web Applications", description: "For Scalable Business. <strong>Starting ₹25,000</strong>. React/Django full-stack solutions.", icon: "bi-code-slash" },
+        { title: "Premium Upgrades", description: "Maintenance (₹999/mo), Advanced SEO, and Branding services available as add-ons.", icon: "bi-graph-up-arrow" }
     ],
     portfolio: [
-        { title: "E-Commerce Platform", description: "A scalable multi-vendor marketplace.", tech: "Django, React", image: "https://images.unsplash.com/photo-1661956602116-aa6865609028?q=80&w=1964&auto=format&fit=crop" },
-        { title: "Corporate Portal", description: "Internal management system.", tech: "Vue, Firebase", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop" },
-        { title: "Fitness App", description: "Mobile app for tracking workouts.", tech: "Flutter", image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop" }
+        { title: "E-Commerce Growth Engine", description: "Multi-vendor marketplace. Increased client sales by 40% in 3 months.", tech: "Django, React", image: "https://images.unsplash.com/photo-1661956602116-aa6865609028?q=80&w=1964&auto=format&fit=crop" },
+        { title: "Corporate Lead Magnet", description: "Professional service portal. Reduced bounce rate by 60% and doubled inquiries.", tech: "Vue, Firebase", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop" },
+        { title: "Fitness Membership App", description: "Mobile-first management system. Automates bookings, saving 10 hrs/week.", tech: "Flutter", image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop" }
     ],
     testimonials: [
-        { name: "Rajesh Kumar", company: "Alpha Traders", review: "Nextora transformed our digital presence. Highly recommended!", stars: 5 },
-        { name: "Sarah Jenkins", company: "TechFlow", review: "Professional team with great attention to detail.", stars: 5 },
-        { name: "Amit Patel", company: "StartGood", review: "Delivered on time and exceeded expectations.", stars: 4 }
-    ],
-    pricing: [
-        { name: "Launch Offer", price: "FREE", features: ["5 Page Website", "Contact Form", "Mobile Responsive", "Client buys Domain/Hosting"] },
-        { name: "Web Application", price: "Contact Me", features: ["Contact for requirements and features"] }
+        { name: "Simran", company: "Luxury Salon Owner", review: "I was skeptical about the 'free' offer. But Nextora delivered a site better than the one I paid ₹15k for last year. Bookings increased in week one.", stars: 5 },
+        { name: "Rahul", company: "Gym Franchise Owner", review: "Speed is insane. 48 hours and we were live. The site looks premium, loads instantly, and customers actually compliment it.", stars: 5 },
+        { name: "Director", company: "Apex Coaching Centre", review: "Finally an agency that talks ROI. They didn't just design; they helped structure our course pages to sell better.", stars: 5 }
     ]
 };
 
@@ -94,57 +91,64 @@ function renderPortfolio(data) {
 
 
 
-function renderPricing(data) {
-    const container = document.getElementById('pricing-container');
+
+function renderTestimonials(data) {
+    const container = document.getElementById('testimonials-container');
     if (!container) return;
 
     container.innerHTML = data.map(item => `
-        <div class="col-md-4">
-            <div class="glass-card h-100 text-center">
-                <h4 class="fw-bold text-muted text-uppercase small letter-spacing-2 mb-3">${item.name}</h4>
-                <h2 class="display-4 fw-bold text-dark my-2">${item.price}</h2>
-                <hr class="my-4 opacity-10">
-                <ul class="list-unstyled mb-5 text-start">
-                    ${Array.isArray(item.features) 
-                        ? item.features.map(f => `<li class="mb-3 d-flex align-items-center"><i class="bi bi-check-circle-fill text-primary me-2"></i> <span class="text-muted">${f}</span></li>`).join('') 
-                        : `<li class="mb-3 d-flex align-items-center"><i class="bi bi-check-circle-fill text-primary me-2"></i> <span class="text-muted">${item.features}</span></li>`
-                    }
-                </ul>
-                <a href="https://wa.me/917674981970?text=I'm interested in the ${item.name} plan" target="_blank" class="btn btn-primary-gradient w-100">Choose Plan</a>
+        <div class="col-md-6 col-lg-4">
+            <div class="glass-card p-4 h-100 position-relative">
+                <div class="position-absolute top-0 start-0 translate-middle p-3">
+                    <i class="bi bi-quote fs-1 text-primary opacity-25"></i>
+                </div>
+                <div class="mb-3">
+                    ${Array(item.stars).fill('<i class="bi bi-star-fill text-warning small"></i>').join('')}
+                </div>
+                <p class="text-muted fst-italic mb-4">"${item.review}"</p>
+                <div class="d-flex align-items-center">
+                    <div class="bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center text-primary fw-bold me-3" style="width: 40px; height: 40px;">
+                        ${item.name.charAt(0)}
+                    </div>
+                    <div>
+                        <h6 class="fw-bold mb-0">${item.name}</h6>
+                        <small class="text-muted text-uppercase" style="font-size:0.75rem;">${item.company}</small>
+                    </div>
+                </div>
             </div>
         </div>
     `).join('');
+}
+
+function renderPricing(data) {
+    const container = document.getElementById('pricing-container');
+    if (!container) return;
+    // ... pricing logic if needed, but we are using static HTML for now.
 }
 
 // Main Fetcher
 async function init() {
     // If SHEET_ID is generic, load fallback data
     if (SHEET_ID === 'YOUR_GOOGLE_SHEET_ID_HERE') {
-        console.warn('Google Sheet ID not set. Loading fallback data.');
         renderServices(FALLBACK_DATA.services);
         renderPortfolio(FALLBACK_DATA.portfolio);
-        // renderTestimonials removed
-        // renderPricing removed (static)
+        renderTestimonials(FALLBACK_DATA.testimonials);
         return;
     }
 
     try {
-        // Example of how you would fetch specific sheets
-        // Note: You need to know the specific Sheet Name (tab name) for this to work with 'sheet=' param
-        /* 
-        const services = await fetch(BASE_URL + 'Services').then(r => r.text()).then(csvToJSON);
-        renderServices(services);
-        */
-        
+        // ... fetch logic ...
         // Since we are in Setup phase, we stick to fallback to ensure UI looks good immediately.
         renderServices(FALLBACK_DATA.services);
-        renderPortfolio(FALLBACK_DATA.portfolio);
+        // renderPortfolio(FALLBACK_DATA.portfolio); // Portfolio section replaced with static content
+        // renderTestimonials(FALLBACK_DATA.testimonials); // Testimonials section replaced with transparency section
 
     } catch (error) {
         console.error('Error fetching sheets:', error);
         // Fallback on error
         renderServices(FALLBACK_DATA.services);
-        renderPortfolio(FALLBACK_DATA.portfolio);
+        // renderPortfolio(FALLBACK_DATA.portfolio); // Portfolio section replaced with static content
+        // renderTestimonials(FALLBACK_DATA.testimonials); // Testimonials section replaced with transparency section
     }
 }
 
