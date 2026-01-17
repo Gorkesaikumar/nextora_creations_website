@@ -23,24 +23,7 @@ window.addEventListener('resize', adjustNavbar);
 window.addEventListener('load', adjustNavbar);
 adjustNavbar();
 
-// One-time Offer Popup (First visit only, after 60 seconds)
-if (!localStorage.getItem('popupShown')) {
-    setTimeout(() => {
-        showOfferModal();
-        localStorage.setItem('popupShown', 'true');
-    }, 60000); // 60 seconds
-}
 
-function showOfferModal() {
-    const offerModalElement = document.getElementById('offerModal');
-    if (offerModalElement) {
-        // Check if modal is already shown to avoid overlapping backdrops or errors
-        if (!offerModalElement.classList.contains('show')) {
-            const offerModal = new bootstrap.Modal(offerModalElement);
-            offerModal.show();
-        }
-    }
-}
 // Smooth Scroll for Anchor Links (if not natively supported by browser)
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
