@@ -11,9 +11,8 @@ const BASE_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx
 // Fallback Data (For when Sheet ID is not yet connected)
 const FALLBACK_DATA = {
     services: [
-        { title: "Free Website Design", description: "For Small Businesses. <strong>₹0 Cost</strong>. Client pays hosting/domain only. 48-hour delivery.", icon: "bi-palette" },
-        { title: "Custom Web Applications", description: "For Scalable Business. <strong>Starting ₹25,000</strong>. React/Django full-stack solutions.", icon: "bi-code-slash" },
-        { title: "Premium Upgrades", description: "Maintenance (₹999/mo), Advanced SEO, and Branding services available as add-ons.", icon: "bi-graph-up-arrow" }
+        { title: "Business Website + Lead System", description: "Professional 1-5 page site. Contact Form, WhatsApp button, Google Maps. <strong>Starts ₹5,000</strong>.", icon: "bi-laptop" },
+        { title: "Custom Web Applications", description: "Scalable SaaS & Internal Tools. React/Django full-stack. <strong>Starts ₹25,000</strong>.", icon: "bi-code-slash" }
     ],
     portfolio: [
         { title: "E-Commerce Growth Engine", description: "Multi-vendor marketplace. Increased client sales by 40% in 3 months.", tech: "Django, React", image: "https://images.unsplash.com/photo-1661956602116-aa6865609028?q=80&w=1964&auto=format&fit=crop" },
@@ -21,7 +20,7 @@ const FALLBACK_DATA = {
         { title: "Fitness Membership App", description: "Mobile-first management system. Automates bookings, saving 10 hrs/week.", tech: "Flutter", image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop" }
     ],
     testimonials: [
-        { name: "Simran", company: "Luxury Salon Owner", review: "I was skeptical about the 'free' offer. But Nextora delivered a site better than the one I paid ₹15k for last year. Bookings increased in week one.", stars: 5 },
+        { name: "Simran", company: "Luxury Salon Owner", review: "I was skeptical about hiring a new agency. But Nextora delivered a site better than the one I paid ₹50k for last year. Bookings increased in week one.", stars: 5 },
         { name: "Rahul", company: "Gym Franchise Owner", review: "Speed is insane. 48 hours and we were live. The site looks premium, loads instantly, and customers actually compliment it.", stars: 5 },
         { name: "Director", company: "Apex Coaching Centre", review: "Finally an agency that talks ROI. They didn't just design; they helped structure our course pages to sell better.", stars: 5 }
     ]
